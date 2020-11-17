@@ -203,6 +203,8 @@ class RawFile(RawFileAbc):
         self._read_header_field_line(header_line_iterator, 'No. Points')
         self._read_header_field_line(header_line_iterator, 'Variables', has_value=False)
         self._read_header_field_line(header_line_iterator, 'No. of Data Columns ')
+        # Need to add this parsing line if using initial conditions...
+        self._read_header_field_line(header_line_iterator, 'Using transient initial condition')
         self._read_header_variables(header_line_iterator)
 
         return raw_data
