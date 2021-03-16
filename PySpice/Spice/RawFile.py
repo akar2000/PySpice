@@ -294,6 +294,7 @@ class RawFileAbc:
         else:
             raise NotImplementedError
 
+        raw_data = raw_data.replace(b"\r\n", b"\n") # Added for windows, see https://github.com/FabriceSalvaire/PySpice/issues/23
         input_data = np.fromstring(raw_data, count=number_of_columns*self.number_of_points, dtype='f8')
         input_data = input_data.reshape((self.number_of_points, number_of_columns))
         input_data = input_data.transpose()
